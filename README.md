@@ -16,6 +16,7 @@ Our VM configuration include:
 | [delete_all.sh](delete_all.sh) | Purpose of this script is to break our environment. We will use it during snapshot restore|
 |[scripts/provision.sh](scripts/provision.sh)| depends on some checks, this script will perform TFE install or restore|
 |[conf/replicated.conf](conf/replicated.conf)| replicated configuration file, needed for the TFE install|
+|[sensitive directory](sensitive)|contain all sensitive information (TLS certificates, TFE license, TFE app settings) |
 
 
 ## Requirements

@@ -1,5 +1,5 @@
-# ptfe-demo-mode-tls-automated
-The repo is just an example how to perform TFE version 4 automated
+# ptfe-demo-mode-automated-valid-ssl
+The repo is just an example how to perform TFE version 4 automated with valid certificate.
 - local instalation 
 - restore from snapshot
 
@@ -24,7 +24,7 @@ Please make sure you have fullfilled the reqirements before continue further:
 - [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed
 - Hashicorp [Vagrant](https://www.vagrantup.com/) installed
 - [Basic Vagrant skills](https://www.vagrantup.com/intro/getting-started/) 
-- Perform [TFE manual tls instalation](https://github.com/berchev/ptfe-demo-mode-tls)
+- Perform [TFE manual ssl instalation](https://github.com/berchev/ptfe-demo-mode-tls)
   - once installation is performed, ssh to ptfe vagrant box
   ```
   vagrant ssh

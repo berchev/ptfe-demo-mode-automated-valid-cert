@@ -1,17 +1,17 @@
-#!/usr/bin/env bash
+ #!/usr/bin/env bash
 
-# Debug mode - uncomment in order to turn it on
-# set -x
+ # Debug mode - uncomment in order to turn it on
+ set -x
 
-########################
-# Variables definition #
-########################
+ ########################
+ # Variables definition #
+ ########################
 
 # Snapshots path
-path="/var/lib/replicated/snapshots"
+ path="/var/lib/replicated/snapshots"
 
 # PTFE online stable bundle
-ptfe_url="https://install.terraform.io/ptfe/stable"
+ ptfe_url="https://install.terraform.io/ptfe/stable"
 
 #######################
 # Function definition #
@@ -32,8 +32,8 @@ Time_Measure_Func () {
 # Main script start #
 #####################
 
-# Check whether we have any snapshots, if "true" => perform restore from snapshot, "else" => perform brand new PTFE instalation
-if [ -d ${path} ]
+# Check whether we have any snapshots, if "true" => perform restore from snapshot
+if [ "$(ls -A ${path}/sha256)" ]
 then 
     # Configure replicated
     curl ${ptfe_url} | bash -s fast-timeouts private-address=${ip_address} no-proxy public-address=${ip_address}
@@ -57,8 +57,12 @@ then
     # Just a timer, I want to measure the amount of time needed for the snapshot restore
     Time_Measure_Func 
     echo "were required to complete the PTFE Restore from snapshot"
+# If which replicated finish with status 0, then TFE is alredy installed. Do nothing, just start the VM
+elif [ "$(which replicated)" ]
+then
+    echo TFE already installed, there is no any snapshots...
 else
-    # Perform brand new instalation of PTFE
+    # Perform brand new instalation of TFE
     cp /vagrant/conf/replicated.conf /etc/replicated.conf
     curl -sSL ${ptfe_url} | sudo bash -s fast-timeouts private-address=${ip_address} no-proxy public-address=${ip_address}
 

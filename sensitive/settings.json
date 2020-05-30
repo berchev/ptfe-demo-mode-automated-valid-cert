@@ -1,0 +1,11 @@
+{
+    "hostname": {
+        "value": "tfe.georgiman.com"
+    },
+    "installation_type": {
+        "value": "poc"
+    },
+    "capacity_concurrency": {
+        "value": "5"
+    }
+}
